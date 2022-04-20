@@ -69,7 +69,8 @@ public class ProductController {
     public ModelAndView addCart(@PathVariable("order_products") Integer orderProductsId) throws Exception{
         ModelAndView response = new ModelAndView();
         response.setViewName("user/cart");
-        Product product = productDao.findById(orderProductsId);
+        OrderProduct orderProduct =  orderProductDao.findById(orderProductsId);
+        Product product = orderProduct.getProduct();
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
         User user = userDao.findByEmail(username);
@@ -95,16 +96,25 @@ public class ProductController {
                 cart.setQuantity(1);
                 orderProductDao.save(cart);
             }
-            else{
-                // For when the user still has a pending status
-                // Need to find the order with the pending status
+//            else{
+//                OrderProduct cart = orderProduct;
+//                // if product in cart matches added item -> update
+//                if(orderProductDao.findByProductId(orderProductsId) == null){
+//                    cart.setProduct(product);
+//                    cart.setQuantity(1);
+//                    cart.
+//                    orderProductDao.save(cart);
+                }
+
+                // For when the user still has a pending status user can only have one pending status open at a time
+                // Need to find the order with the pending status -absolete
                 // use that order to create a new orderProduct (cart)
                 // To add a new cart with the same orderId as the pending status
                 // create if statement before the create to search if the product id
                 // is already present in the order by orderId, if so update, if not create.
-                OrderProduct cart = orderProductDao.find
-            }
-        }
+//                OrderProduct cart = orderProductDao.find;
+//            }
+//        }
 
         log.info(product.toString());
         return response;

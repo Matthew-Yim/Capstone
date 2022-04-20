@@ -1,3 +1,5 @@
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 <!-- Nav Bar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" style="background-color: #3F3F3F; opacity: 0.85">
     <div class="container-fluid">
@@ -38,17 +40,30 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/user/cart">Cart</a>
+                    <sec:authorize access="!isAuthenticated()">
+                        <a class="nav-link" href="/user/cart">Cart</a>
+                    </sec:authorize>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/product">Product</a>
+                    <sec:authorize access="!isAuthenticated()">
+                    <a class="nav-link" href="/product">Create/Edit Product</a>
+                    </sec:authorize>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/showAll">Product</a>
+                    <a class="nav-link" href="/showAll">All Products</a>
                 </li>
+                <li class="nav-item">
+                    <p style="color: white; ">Welcome Back, <sec:authentication property="name"/></p>
+                </li>
+
             </ul>
         </div>
-        <a id="login" href="../user/login">Login</a>
+        <sec:authorize access="!isAuthenticated()">
+            <a id="login" href="../user/login">Login</a>
+        </sec:authorize>
+        <sec:authorize access="isAuthenticated()">
+            <a id="login" href="../user/login">Logout</a>
+        </sec:authorize>
         <span>/</span>
         <a id="signUp" href="../user/register">Sign up</a>
     </div>

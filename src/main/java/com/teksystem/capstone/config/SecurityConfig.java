@@ -26,15 +26,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
             .csrf().disable()
             .authorizeRequests()
-                .antMatchers("/pub/**", "/error/**", "/login/**", "/index", "/user/**","/cart/**", "/showAll/**").permitAll()
-                .antMatchers("/admin/**").authenticated()
+                .antMatchers("/pub/**", "/error/**", "/login/**", "/index", "/showAll/**").permitAll()
+                .antMatchers("/admin/**" ).authenticated()
                 .and()
             .formLogin()
                 // this is the URL of the login page
-                .loginPage("/login/login")
+                .loginPage("/user/login")
                 // this is the URL where the login page will submit
-                .loginProcessingUrl("/login/loginSubmit")
+                .loginProcessingUrl("/user/loginSubmit")
                 .defaultSuccessUrl("/index")
+                .failureUrl("/user/register")
                 .and()
             .logout()
                 .invalidateHttpSession(true)

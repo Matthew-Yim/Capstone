@@ -18,6 +18,6 @@ public Product findProductByCategory(@Param("category") String category);
 
 public Product findProductByDescription(@Param("description") String description);
 
-public List<Product> findByPrice(@Param("price") Long price);
+public List<Product> findByPrice(@Param("price") Double price);
 
 }

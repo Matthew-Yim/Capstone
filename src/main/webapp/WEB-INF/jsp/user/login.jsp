@@ -12,10 +12,10 @@
                     <i class="fa-solid fa-user-secret fa-beat"></i>
                 </div>
                 <label id="emailLabel" for="email">Email: </label>
-                <input type="text" name="username" id="email" placeholder="email@domain.com"><br>
-                <c:forEach items='${bindingResult.getFieldErrors("email")}' var="error">
-                    <div style="color:red;">${error.getDefaultMessage()}</div>
-                </c:forEach>
+                <input type="text" name="email" id="email" placeholder="email@domain.com"><br>
+<%--                <c:forEach items='${bindingResult.getFieldErrors("email")}' var="error">--%>
+<%--                    <div style="color:red;">${error.getDefaultMessage()}</div>--%>
+<%--                </c:forEach>--%>
             </div>
             <div class="form-group">
                 <div class="input-icon">
@@ -23,9 +23,9 @@
                 </div>
                 <label id="passwordLabel" for="password">Password: </label>
                 <input type="text" name="password" id="password" placeholder="ex: Banana"><br>
-                <c:forEach items='${bindingResult.getFieldErrors("password")}' var="error">
-                    <div style="color:red;">${error.getDefaultMessage()}</div>
-                </c:forEach>
+<%--                <c:forEach items='${bindingResult.getFieldErrors("password")}' var="error">--%>
+<%--                    <div style="color:red;">${error.getDefaultMessage()}</div>--%>
+<%--                </c:forEach>--%>
             </div>
             <button type="submit" class="btn btn-login">Login</button>
         </form>

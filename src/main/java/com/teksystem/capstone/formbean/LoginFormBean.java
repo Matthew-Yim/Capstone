@@ -12,10 +12,9 @@ import javax.validation.constraints.*;
 @ToString
 public class LoginFormBean {
 
-    @EmailUnique(message = "Email already exists in the database")
     @NotBlank(message = "Email is required")
     @Email(message = "@Email from spring validator")
-    @Pattern(regexp = "[a-z0-9]+@[a-z]+\\.[a-z]{2,3}\n", message = "Email format invalid")
+//    @Pattern(regexp = "[a-z0-9]+@[a-z]+\\.[a-z]{2,3}\n", message = "Email format invalid")
     private String email;
 
     @NotBlank(message = "Password is required")

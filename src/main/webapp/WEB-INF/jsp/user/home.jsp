@@ -2,7 +2,6 @@
 <jsp:include page="../include/navBar.jsp" />
 <%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
 <link rel="stylesheet" href="../../../pub/css/homeFinal.css">
-
 <!-- Image Slider -->
 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
     <div class="carousel-inner">
