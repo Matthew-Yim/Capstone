@@ -6,16 +6,13 @@
 <div class="content">
     <div class="form-area">
         <h1>User Login</h1>
-        <form id="loginForm" action="/user/loginSubmit" method="post">
+        <form id="loginForm" action="/login/loginSubmit" method="POST">
             <div class="form-group">
                 <div class="input-icon">
                     <i class="fa-solid fa-user-secret fa-beat"></i>
                 </div>
                 <label id="emailLabel" for="email">Email: </label>
-                <input type="text" name="email" id="email" placeholder="email@domain.com"><br>
-<%--                <c:forEach items='${bindingResult.getFieldErrors("email")}' var="error">--%>
-<%--                    <div style="color:red;">${error.getDefaultMessage()}</div>--%>
-<%--                </c:forEach>--%>
+                <input type="text" name="username" id="email" placeholder="email@domain.com"><br>
             </div>
             <div class="form-group">
                 <div class="input-icon">
@@ -23,9 +20,6 @@
                 </div>
                 <label id="passwordLabel" for="password">Password: </label>
                 <input type="text" name="password" id="password" placeholder="ex: Banana"><br>
-<%--                <c:forEach items='${bindingResult.getFieldErrors("password")}' var="error">--%>
-<%--                    <div style="color:red;">${error.getDefaultMessage()}</div>--%>
-<%--                </c:forEach>--%>
             </div>
             <button type="submit" class="btn btn-login">Login</button>
         </form>

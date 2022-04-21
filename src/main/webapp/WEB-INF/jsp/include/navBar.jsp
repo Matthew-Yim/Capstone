@@ -59,12 +59,14 @@
             </ul>
         </div>
         <sec:authorize access="!isAuthenticated()">
-            <a id="login" href="../user/login">Login</a>
+            <a id="login" href="../login/login">Login</a>
+            <span>/</span>
+            <a id="signUp" href="../login/register">Sign up</a>
         </sec:authorize>
         <sec:authorize access="isAuthenticated()">
-            <a id="login" href="../user/login">Logout</a>
+            <a id="login" href="../login/logout">Logout</a>
         </sec:authorize>
-        <span>/</span>
-        <a id="signUp" href="../user/register">Sign up</a>
+
+
     </div>
 </nav>
