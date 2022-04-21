@@ -31,7 +31,7 @@ body{
 .navbar{
     background-color: #3F3F3F; opacity: 0.85
 }
-#registrationForm{
+#loginForm{
     color: whitesmoke;
     text-shadow: 2px 2px 8px #FF0000;
     font-weight: bold;

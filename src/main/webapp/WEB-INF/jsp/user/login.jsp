@@ -6,7 +6,7 @@
 <div class="content">
     <div class="form-area">
         <h1>User Login</h1>
-        <form id="registrationForm" action="/user/loginSubmit" method="post">
+        <form id="loginForm" action="/user/loginSubmit" method="post">
             <div class="form-group">
                 <div class="input-icon">
                     <i class="fa-solid fa-user-secret fa-beat"></i>
