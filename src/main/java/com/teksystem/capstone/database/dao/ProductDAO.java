@@ -20,4 +20,5 @@ public Product findProductByDescription(@Param("description") String description
 
 public List<Product> findByPrice(@Param("price") Double price);
 
+public List<Product> findByNameIgnoreCaseContaining(@Param("name") String name);
 }

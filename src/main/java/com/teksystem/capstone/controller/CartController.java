@@ -8,6 +8,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,8 +36,8 @@ public class CartController {
     @Autowired
     private UserDAO userDao;
 
-    @RequestMapping(value = "/cart", method = RequestMethod.GET)
-    public ModelAndView cartView() throws Exception{
+    @RequestMapping(value = "/user/cart", method = RequestMethod.GET)
+    public ModelAndView cartView() throws Exception {
         ModelAndView response = new ModelAndView();
         response.setViewName("user/cart");
 
@@ -45,6 +46,64 @@ public class CartController {
         response.addObject("productsKey", ordersKey);
         return response;
     }
+
+    //this has too be product id not order_products
+//    @RequestMapping(value = "/AddCart/{order_products}", method = RequestMethod.GET)
+//    public ModelAndView addItemToList(@PathVariable("order_products") Integer orderProductsId) throws Exception {
+//        ModelAndView response = new ModelAndView();
+//        response.setViewName("user/cart");
+//
+//        // add items to list
+//        //create new order there and set status to active
+//        //in the cart have the cart look up for any active order associated to the user log in and have them completed
+//        OrderProduct orderProduct = orderProductDao.findById(orderProductsId);
+//        Product product = orderProduct.getProduct();
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        String username = authentication.getName();
+//        User user = userDao.findByEmail(username);
+//        Order order = orderDao.findOrderByUserIdAndStatus(user.getId(), "active");
+//        if (order == null) {
+//            order = new Order();
+//            order.setStatus("active");
+//            // We gunna save this to the cart(OrderProduct table)
+//            OrderProduct orderProduct = new OrderProduct();
+//            orderProduct.setOrder(order);
+//            orderProduct.setProduct(product);
+//            orderProduct.setQuantity(1);
+//            orderProductDao.save(orderProduct);
+//        } else {
+//            if (order.getStatus().equals("inactive")) {
+//                order = new Order();
+//                order.setStatus("active");
+//                // We gunna save this to the cart(OrderProduct table)
+//                OrderProduct cart = new OrderProduct();
+//                cart.setOrder(order);
+//                cart.setProduct(product);
+//                cart.setQuantity(1);
+//                orderProductDao.save(cart);
+//            } else {
+//                OrderProduct cart = orderProduct;
+//                // if product in cart matches added item -> update
+//                if (orderProductDao.findByProductId(orderProductsId) == null) {
+//                    cart.setProduct(product);
+//                    cart.setQuantity(1);
+//                    orderProductDao.save(cart);
+//                }
+//
+//                // For when the user still has a pending status user can only have one pending status open at a time
+//                // Need to find the order with the pending status -absolete
+//                // use that order to create a new orderProduct (cart)
+//                // To add a new cart with the same orderId as the pending status
+//                // create if statement before the create to search if the product id
+//                // is already present in the order by orderId, if so update, if not create.
+//                // OrderProduct cart = orderProductDao.find;
+//                List<OrderProduct> orderProducts = orderProductDao.findByOrderId(order.getId()); // Here we get all orderProducts that have a certain orderID
+//                response.addObject("cartList", orderProducts);
+//                log.info(product.toString());
+//                return response;
+//            }
+//        }
+//    }
 //    Cart cart = orderProductDao.findById(form.ge) // userDao.findById(form.getId());
 //    // Used to create a new user, if the user loaded by the database is null
 //        if (user == null){
@@ -113,5 +172,4 @@ public class CartController {
 //
 //        return response;
 //    }
-
 }

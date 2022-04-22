@@ -12,13 +12,13 @@
         <c:if test="${not empty formBean.id}">
             <h1>Edit User</h1>
         </c:if>
-        <form id="registrationForm" action="/user/registerSubmit"   method="post">
+        <form id="registrationForm" action="/login/registerSubmit"   method="POST">
             <div class="form-group">
                 <div class="input-icon">
                     <i class="fa-solid fa-signature fa-bounce"></i>
                 </div>
                 <label id="firstNameLabel" for="firstName">First Name: </label>
-                <input type="text" name="email" id="firstName" placeholder="Donkey"><br>
+                <input type="text" name="firstName" id="firstName" placeholder="Donkey"><br>
                 <c:forEach items='${bindingResult.getFieldErrors("firstName")}' var="error">
                     <div style="color:red;">${error.getDefaultMessage()}</div>
                 </c:forEach>
@@ -28,7 +28,7 @@
                     <i class="fa-solid fa-signature fa-bounce"></i>
                 </div>
                 <label id="lastNameLabel" for="lastName">Last Name: </label>
-                <input type="text" name="email" id="lastName" placeholder="Kong"><br>
+                <input type="text" name="lastName" id="lastName" placeholder="Kong"><br>
                 <c:forEach items='${bindingResult.getFieldErrors("lastName")}' var="error">
                     <div style="color:red;">${error.getDefaultMessage()}</div>
                 </c:forEach>

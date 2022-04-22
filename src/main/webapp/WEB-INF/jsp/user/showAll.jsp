@@ -23,7 +23,7 @@
 <%--</form>--%>
 
 <table class="table">
-    <tr>
+    <tr class="tableText">
         <th>Image</th>
         <th>Name</th>
         <th>Price</th>
@@ -31,12 +31,12 @@
     </tr>
     <c:forEach
             items="${productsKey}" var="product">
-        <tr scope="row">
-            <td><img src="../../../pub/images/${product.imageUrl}" style="height: 100px; width: 100px;" alt=""></td>
+        <tr scope="row" class="tableText">
+            <td><img style="border-radius: 0 50% 50% 50%; height: 100px; width: 100px;" src="../../../pub/images/${product.imageUrl}"  alt=""></td>
             <td>${product.name}</td>
             <td>${product.price}</td>
             <td>${product.description}</td>
-            <td><a href="/AddCart/${product.id}">Add to Cart</a></td>
+            <td><a href="./AddCart/${product.id}">Add to Cart</a></td>
         </tr>
     </c:forEach>
 </table>

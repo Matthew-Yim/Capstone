@@ -1,4 +1,5 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!-- Nav Bar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" style="background-color: #3F3F3F; opacity: 0.85">
@@ -40,22 +41,27 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <sec:authorize access="!isAuthenticated()">
+                    <sec:authorize access="isAuthenticated()">
                         <a class="nav-link" href="/user/cart">Cart</a>
                     </sec:authorize>
                 </li>
                 <li class="nav-item">
-                    <sec:authorize access="!isAuthenticated()">
-                    <a class="nav-link" href="/product">Create/Edit Product</a>
+                    <sec:authorize access="isAuthenticated()">
+                        <!-- Display admin -->
+                        <a class="nav-link" href="/product">Product</a>
                     </sec:authorize>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/showAll">All Products</a>
-                </li>
-                <li class="nav-item">
-                    <p style="color: white; ">Welcome Back, <sec:authentication property="name"/></p>
-                </li>
+                    <sec:authorize access="!isAuthenticated()">
+                        <!-- Display user -->
+                        <a class="nav-link" href="/product">Join our Team</a>
+                    </sec:authorize>
 
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/showAll">View Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/search">Search</a>
+                </li>
             </ul>
         </div>
         <sec:authorize access="!isAuthenticated()">
@@ -67,6 +73,6 @@
             <a id="login" href="../login/logout">Logout</a>
         </sec:authorize>
 
-
     </div>
 </nav>
+<h5 style="color: white">Welcome Back, <sec:authentication property="name"/></h5>

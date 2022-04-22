@@ -8,6 +8,7 @@ import com.teksystem.capstone.database.entity.Order;
 import com.teksystem.capstone.database.entity.OrderProduct;
 import com.teksystem.capstone.database.entity.Product;
 import com.teksystem.capstone.database.entity.User;
+import com.teksystem.capstone.formbean.EditProductFormBean;
 import com.teksystem.capstone.formbean.LoginFormBean;
 import com.teksystem.capstone.formbean.ProductFormBean;
 import com.teksystem.capstone.formbean.RegisterFormBean;
@@ -16,16 +17,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Path;
 import javax.validation.Valid;
 import javax.websocket.server.PathParam;
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -65,63 +66,10 @@ public class ProductController {
         return response;
     }
 
-    @RequestMapping(value = "/AddCart/{order_products}", method = RequestMethod.GET)
-    public ModelAndView addCart(@PathVariable("order_products") Integer orderProductsId) throws Exception{
-        ModelAndView response = new ModelAndView();
-        response.setViewName("user/cart");
-        OrderProduct orderProduct =  orderProductDao.findById(orderProductsId);
-        Product product = orderProduct.getProduct();
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = authentication.getName();
-        User user = userDao.findByEmail(username);
-        Order order = orderDao.findOrderByUserIdAndStatus(user.getId(), "pending");
-        if (order == null){
-            order = new Order();
-            order.setStatus("pending");
-            // We gunna save this to the cart(OrderProduct table)
-            OrderProduct cart = new OrderProduct();
-            cart.setOrder(order);
-            cart.setProduct(product);
-            cart.setQuantity(1);
-            orderProductDao.save(cart);
-        }
-        else{
-            if (order.getStatus().equals("completed")){
-                order = new Order();
-                order.setStatus("pending");
-                // We gunna save this to the cart(OrderProduct table)
-                OrderProduct cart = new OrderProduct();
-                cart.setOrder(order);
-                cart.setProduct(product);
-                cart.setQuantity(1);
-                orderProductDao.save(cart);
-            }
-//            else{
-//                OrderProduct cart = orderProduct;
-//                // if product in cart matches added item -> update
-//                if(orderProductDao.findByProductId(orderProductsId) == null){
-//                    cart.setProduct(product);
-//                    cart.setQuantity(1);
-//                    cart.
-//                    orderProductDao.save(cart);
-                }
 
-                // For when the user still has a pending status user can only have one pending status open at a time
-                // Need to find the order with the pending status -absolete
-                // use that order to create a new orderProduct (cart)
-                // To add a new cart with the same orderId as the pending status
-                // create if statement before the create to search if the product id
-                // is already present in the order by orderId, if so update, if not create.
-//                OrderProduct cart = orderProductDao.find;
-//            }
-//        }
-
-        log.info(product.toString());
-        return response;
-    }
 
     @RequestMapping(value = "/product/productSubmit", method ={ RequestMethod.POST, RequestMethod.GET })
-    public ModelAndView submit(@Valid ProductFormBean formBean, BindingResult bindingResult) throws Exception{
+    public ModelAndView submit(@Valid EditProductFormBean formBean, BindingResult bindingResult) throws Exception{
         ModelAndView response = new ModelAndView();
 
         log.info(formBean.toString());
@@ -133,7 +81,11 @@ public class ProductController {
             response.addObject("formBean", formBean);
         }
         else{
-            Product product = new Product();
+            //need if statement for when we want to edit
+            Product product = productDao.findById(formBean.getId());
+            if(product == null){
+                product = new Product();
+            }
             product.setName(formBean.getName());
             product.setDescription(formBean.getDescription());
             product.setPrice(formBean.getPrice());
@@ -145,18 +97,62 @@ public class ProductController {
         return response;
     }
 
-    @RequestMapping(value = "/product/delete{id}", method = RequestMethod.GET)
-    public ModelAndView delete(@PathParam("id") Integer id) throws Exception{
+    @RequestMapping(value = "/product/delete/{productId}", method = RequestMethod.GET)
+    public ModelAndView deleteProduct(@PathVariable("productId") Integer productId) throws Exception{
         ModelAndView response = new ModelAndView();
-        response.setViewName("user/login");
-
-        Product product = productDao.findById(id);
+        response.setViewName("user/product");
+        Product product = productDao.findById(productId);
+        log.info("We finna delete Product: " + product.getName());
         if(product == null){
-            // Error message
+            String error = "You Dunn messed up";
+            response.addObject("error", error);
         }
         else{
             productDao.delete(product);
         }
+        return response;
+    }
+
+    @RequestMapping(value="/search", method= RequestMethod.GET )
+    public ModelAndView search(@RequestParam(value = "productName", required = false) String productName) {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("user/search");
+
+        List<Product> products = new ArrayList<>();
+
+        // very basic example of error checking
+        if (!StringUtils.isEmpty(productName)) {
+            products = productDao.findByNameIgnoreCaseContaining(productName);
+        }
+
+        // this line puts the list of users that we just queried into the model
+        // the model is a map ( key value store )
+        // any object of any kind can go into the model using this key value
+        // in this case it is a list of Users
+        response.addObject("productsModelKey", products);
+        response.addObject("productName", productName);
+
+        return response;
+    }
+
+    @RequestMapping("/product/edit/{productId}")
+    public ModelAndView editProduct(@PathVariable("productId") Integer productId) throws Exception {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("user/product");
+
+        Product product = productDao.findById(productId);
+        ProductFormBean form = new ProductFormBean();
+
+        form.setId(product.getId());
+        form.setName(product.getName());
+        form.setDescription(product.getDescription());
+        form.setPrice(product.getPrice());
+        form.setImageUrl(product.getImageUrl());
+        form.setCategory(product.getCategory());
+
+        // in this case we are adding the RegisterFormBean to the model
+        response.addObject("form", form);
+
         return response;
     }
 }

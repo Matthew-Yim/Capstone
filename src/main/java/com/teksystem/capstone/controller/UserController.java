@@ -57,10 +57,10 @@ public class UserController {
         return response;
     }
 
-    @RequestMapping(value = "/user/register", method = RequestMethod.GET)
+    @RequestMapping(value = "/login/register", method = RequestMethod.GET)
     public ModelAndView register() throws Exception{
         ModelAndView response = new ModelAndView();
-        response.setViewName("user/register");
+        response.setViewName("login/register");
         //Safety lines for JSP page substitution error
         RegisterFormBean form = new RegisterFormBean();
         response.addObject("formBean", form);
@@ -79,7 +79,7 @@ public class UserController {
 
     // Instead of doing "(@RequestParam("email") String email)" for every variable we can just use Formbean for all variable (no need to repeat x num of times)
    // This method now becomes a create and an edit based on if the id is populated in the RegisterFormBean
-    @RequestMapping(value = "/user/registerSubmit", method ={ RequestMethod.POST, RequestMethod.GET })
+    @RequestMapping(value = "/login/registerSubmit", method ={ RequestMethod.POST, RequestMethod.GET })
     public ModelAndView registerSubmit(@Valid RegisterFormBean formBean, BindingResult bindingResult) throws Exception{
         ModelAndView response = new ModelAndView();
         log.info(formBean.toString());
@@ -92,7 +92,7 @@ public class UserController {
             response.addObject("bindingResult", bindingResult);
             // because there is 1 or more error we do not want to process the logic below
             // that will create a new user in the database. We want to show the register.jsp
-            response.setViewName("user/register");
+            response.setViewName("login/register");
             return response;
         }
         // Assume that we are trying to edit first, but if user is null go to next statement
@@ -120,7 +120,7 @@ public class UserController {
         log.info(formBean.toString());
         // Redirecting user to edit page which will load the user from database
 //        response.setViewName("user/edit");
-        response.setViewName("user/register");
+        response.setViewName("login/register");
         return response;
     }
 
