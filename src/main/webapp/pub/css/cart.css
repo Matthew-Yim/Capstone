@@ -6,17 +6,35 @@ html, body{
     font-size: larger;
 }
 body{
-    background-color: dimgrey;
-}
+    margin: 0;
+    background: url("../images/sojuLogin.jpg") no-repeat center fixed;
+    background-size: cover;}
 #login{
     color: whitesmoke;
 }
 #signUp{
     color: red;
 }
+#headerMessage{
+    box-sizing: border-box;
+    color:  rgb(125, 117, 115);
+    background-color: #262626;
+    display: block;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+#boba-logo{
+    border-radius: 50%;
+    color: red;
+}
 .navbar {
     background-color: #3F3F3F;
     opacity: 0.85
+}
+.text{
+    color: white;
+    font-size: large;
 }
 footer{
     background-color: #111;
@@ -24,6 +42,11 @@ footer{
     width: 100%;
     padding-top: 40px;
     color: whitesmoke;
+    position: absolute;
+    top: 120%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
 }
 .footer-content{
     display: flex;

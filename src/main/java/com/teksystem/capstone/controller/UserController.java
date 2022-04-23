@@ -4,8 +4,6 @@ import com.teksystem.capstone.database.dao.UserDAO;
 import com.teksystem.capstone.database.dao.UserRoleDAO;
 import com.teksystem.capstone.database.entity.User;
 import com.teksystem.capstone.database.entity.UserRole;
-import com.teksystem.capstone.formbean.LoginFormBean;
-import com.teksystem.capstone.formbean.ProductFormBean;
 import com.teksystem.capstone.formbean.RegisterFormBean;
 import com.teksystem.capstone.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +18,6 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
