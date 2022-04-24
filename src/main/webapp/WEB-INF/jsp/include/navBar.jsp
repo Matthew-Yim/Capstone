@@ -42,7 +42,7 @@
                 </li>
                 <li class="nav-item">
                     <sec:authorize access="isAuthenticated()">
-                        <a class="nav-link" href="/user/cart">Cart</a>
+                        <a class="nav-link" href="../cart/cart">Cart</a>
                     </sec:authorize>
                 </li>
                 <li class="nav-item">
@@ -61,6 +61,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/search">Search</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../success/success">Success</a>
                 </li>
             </ul>
         </div>

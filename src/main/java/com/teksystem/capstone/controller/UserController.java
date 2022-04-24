@@ -54,70 +54,10 @@ public class UserController {
         return response;
     }
 
-    @RequestMapping(value = "/login/register", method = RequestMethod.GET)
-    public ModelAndView register() throws Exception{
+    @RequestMapping(value = "/success/success", method = RequestMethod.GET)
+    public ModelAndView success() throws Exception{
         ModelAndView response = new ModelAndView();
-        response.setViewName("login/register");
-        //Safety lines for JSP page substitution error
-        RegisterFormBean form = new RegisterFormBean();
-        response.addObject("formBean", form);
-
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String currentPrincipalName = authentication.getName();
-        User loggedInUser = userDao.findByEmail(currentPrincipalName);
-
-        if ( loggedInUser == null ) {
-            log.debug("Not logged in");
-        } else {
-            log.debug("User logged in " + loggedInUser);
-        }
-        return response;
-    }
-
-    // Instead of doing "(@RequestParam("email") String email)" for every variable we can just use Formbean for all variable (no need to repeat x num of times)
-   // This method now becomes a create and an edit based on if the id is populated in the RegisterFormBean
-    @RequestMapping(value = "/login/registerSubmit", method ={ RequestMethod.POST, RequestMethod.GET })
-    public ModelAndView registerSubmit(@Valid RegisterFormBean formBean, BindingResult bindingResult) throws Exception{
-        ModelAndView response = new ModelAndView();
-        log.info(formBean.toString());
-        if (bindingResult.hasErrors()){
-            for(ObjectError error : bindingResult.getAllErrors()){
-                log.info(((FieldError) error).getField() + " " + error.getDefaultMessage());
-            }
-            response.addObject("formBean", formBean);
-            // add the error list to the model
-            response.addObject("bindingResult", bindingResult);
-            // because there is 1 or more error we do not want to process the logic below
-            // that will create a new user in the database. We want to show the register.jsp
-            response.setViewName("login/register");
-            return response;
-        }
-        // Assume that we are trying to edit first, but if user is null go to next statement
-        User user = new User();
-//        User user = userDao.findById(form.getId());
-//        // Used to create a new user, if the user loaded by the database is null
-//        if (user == null){
-//            user = new User();
-//        }
-        log.info("We bout to set the data of a user");
-        user.setEmail(formBean.getEmail());
-        user.setFirstName(formBean.getFirstName());
-        user.setLastName(formBean.getLastName());
-        String password = passwordEncoder.encode(formBean.getPassword());
-        user.setPassword(password);
-        log.info(user.toString());
-        // Saving to database
-        userDao.save(user);
-        // Creating userRole object so we can add  datato userRole table
-        UserRole userRole = new UserRole();
-        userRole.setUserId(user.getId());
-        userRole.setUserRole("USER");
-        userRoleDao.save(userRole);
-        // Replaces "("email from form submission = " + email)"
-        log.info(formBean.toString());
-        // Redirecting user to edit page which will load the user from database
-//        response.setViewName("user/edit");
-        response.setViewName("login/register");
+        response.setViewName("success/success");
         return response;
     }
 

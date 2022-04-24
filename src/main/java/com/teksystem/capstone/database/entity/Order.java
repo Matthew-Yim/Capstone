@@ -30,8 +30,11 @@ public class Order {
     @Column(name = "credit_card")
     private String creditCard;
 
-    @ManyToOne(fetch= FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+//    @ManyToOne(fetch= FetchType.LAZY, optional = false)
+//    @JoinColumn(name = "user_id", nullable = false)
+//    private User user;
 
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name="user_id", referencedColumnName = "id") //pointing to primary from 'users' table
+    private User user;
 }

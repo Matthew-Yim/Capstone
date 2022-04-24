@@ -1,6 +1,7 @@
 <jsp:include page="../include/header.jsp" />
 <jsp:include page="../include/navBar.jsp" />
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <link rel="stylesheet" href="../../../pub/css/showAll.css">
 
 <%--<form name="ShoppingList">--%>
@@ -27,6 +28,7 @@
         <th>Image</th>
         <th>Name</th>
         <th>Price</th>
+        <th>Category</th>
         <th>Description</th>
     </tr>
     <c:forEach
@@ -35,8 +37,12 @@
             <td><img style="border-radius: 0 50% 50% 50%; height: 100px; width: 100px;" src="../../../pub/images/${product.imageUrl}"  alt=""></td>
             <td>${product.name}</td>
             <td>${product.price}</td>
+            <td>${product.category}</td>
             <td>${product.description}</td>
-            <td><a href="./AddCart/${product.id}">Add to Cart</a></td>
+            <sec:authorize access="isAuthenticated()">
+                <td><a href="/AddCart/${product.id}">Add to Cart</a></td>
+            </sec:authorize>
+        <%--            <td><a href="./AddCart/${product.id}">Add to Cart</a></td>--%>
         </tr>
     </c:forEach>
 </table>

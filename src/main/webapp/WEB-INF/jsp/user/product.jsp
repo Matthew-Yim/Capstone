@@ -61,10 +61,16 @@
                         <i class="fa-solid fa-cat fa-bounce"></i>
                     </div>
                     <label id="categoryLabel" for="category">Category: </label>
-                    <input type="text" name="category" id="category" placeholder="ex: Blenders/Mixers" value="${form.category}"><br>
-                    <c:forEach items='${bindingResult.getFieldErrors("category")}' var="error">
-                        <div style="color:red;">${error.getDefaultMessage()}</div>
-                    </c:forEach>
+                    <select name="category" id="category">
+                        <option value="Tranquil Teas">Tranquil Teas</option>
+                        <option value="Icy Snows">Icy Snows</option>
+                        <option value="Fresh Blenders">Fresh Blenders</option>
+                        <option value="Hypnotic Mixers">Hypnotic Mixers</option>
+                    </select>
+<%--                    <input type="text" name="category" id="category" placeholder="ex: Blenders/Mixers" value="${form.category}"><br>--%>
+<%--                    <c:forEach items='${bindingResult.getFieldErrors("category")}' var="error">--%>
+<%--                        <div style="color:red;">${error.getDefaultMessage()}</div>--%>
+<%--                    </c:forEach>--%>
                 </div>
                 <button type="submit" class="btn btn-login">Submit</button>
             </form>
