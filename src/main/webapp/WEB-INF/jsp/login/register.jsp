@@ -12,7 +12,7 @@
         <c:if test="${not empty formBean.id}">
             <h1>Edit User</h1>
         </c:if>
-        <form id="registrationForm" action="/login/registerSubmit"   method="POST">
+        <form id="registrationForm" action="/registerSubmit"   method="POST">
             <div class="form-group">
                 <div class="input-icon">
                     <i class="fa-solid fa-signature fa-bounce"></i>

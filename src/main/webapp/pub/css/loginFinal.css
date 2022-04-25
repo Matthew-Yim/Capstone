@@ -7,7 +7,7 @@ html, body{
 }
 body{
     margin: 0;
-    background: url("../images/sojuLogin.jpg") no-repeat center fixed;
+    background: url("../images/login.jpg") no-repeat center fixed;
     background-size: cover;}
 #login{
     color: whitesmoke;

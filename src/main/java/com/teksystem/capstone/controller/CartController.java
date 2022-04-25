@@ -36,7 +36,7 @@ public class CartController {
     @Autowired
     private UserDAO userDao;
 
-    @RequestMapping(value = "/cart/cart", method = RequestMethod.GET)
+    @RequestMapping(value = "/cart", method = RequestMethod.GET)
     public ModelAndView cartView() throws Exception {
         ModelAndView response = new ModelAndView();
         response.setViewName("cart/cart");

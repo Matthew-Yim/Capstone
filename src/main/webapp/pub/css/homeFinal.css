@@ -4,6 +4,7 @@ html, body{
     width: 100%;
     font-family: 'Grape Nuts', cursive;
     font-size: larger;
+    overflow-x: hidden;
 }
 body{
     background-color: black;

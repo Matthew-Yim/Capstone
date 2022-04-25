@@ -9,6 +9,7 @@ body{
     margin: 0;
     background: url("../images/coffeeJob.jpg") no-repeat center fixed;
     background-size: cover;
+    overflow-x: hidden;
 }
 #login{
     color: whitesmoke;

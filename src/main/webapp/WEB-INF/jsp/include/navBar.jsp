@@ -42,7 +42,7 @@
                 </li>
                 <li class="nav-item">
                     <sec:authorize access="isAuthenticated()">
-                        <a class="nav-link" href="../cart/cart">Cart</a>
+                        <a class="nav-link" href="/cart">Cart</a>
                     </sec:authorize>
                 </li>
                 <li class="nav-item">
@@ -60,17 +60,19 @@
                     <a class="nav-link" href="/showAll">View Products</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/search">Search</a>
+                    <a class="nav-link" href="/search">Search Product</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../success/success">Success</a>
+                    <sec:authorize access="isAuthenticated()">
+                        <a class="nav-link" href="#">Search User</a>
+                    </sec:authorize>
                 </li>
             </ul>
         </div>
         <sec:authorize access="!isAuthenticated()">
-            <a id="login" href="../login/login">Login</a>
+            <a id="login" href="/login">Login</a>
             <span>/</span>
-            <a id="signUp" href="../login/register">Sign up</a>
+            <a id="signUp" href="/register">Sign up</a>
         </sec:authorize>
         <sec:authorize access="isAuthenticated()">
             <a id="login" href="../login/logout">Logout</a>

@@ -47,20 +47,6 @@ public class UserController {
         return response;
     }
 
-    @RequestMapping(value = "/user/cart", method = RequestMethod.GET)
-    public ModelAndView cart() throws Exception{
-        ModelAndView response = new ModelAndView();
-        response.setViewName("user/cart");
-        return response;
-    }
-
-    @RequestMapping(value = "/success/success", method = RequestMethod.GET)
-    public ModelAndView success() throws Exception{
-        ModelAndView response = new ModelAndView();
-        response.setViewName("success/success");
-        return response;
-    }
-
     // This method is for editing a user. There is a path parameter being used to pass the userid for the user that is to be edited
     // @GetMapping("/user/edit/{userId}") is equivalent to below
     @RequestMapping(value = "/user/edit/{userId}", method = RequestMethod.GET)
