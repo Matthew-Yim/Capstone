@@ -113,10 +113,10 @@ public class ProductController {
         return response;
     }
 
-    @RequestMapping(value="/search", method= RequestMethod.GET )
+    @RequestMapping(value="/searchProduct", method= RequestMethod.GET )
     public ModelAndView search(@RequestParam(value = "productName", required = false) String productName) {
         ModelAndView response = new ModelAndView();
-        response.setViewName("user/search");
+        response.setViewName("search/searchProduct");
 
         List<Product> products = new ArrayList<>();
 
@@ -125,10 +125,6 @@ public class ProductController {
             products = productDao.findByNameIgnoreCaseContaining(productName);
         }
 
-        // this line puts the list of users that we just queried into the model
-        // the model is a map ( key value store )
-        // any object of any kind can go into the model using this key value
-        // in this case it is a list of Users
         response.addObject("productsModelKey", products);
         response.addObject("productName", productName);
 
@@ -141,7 +137,7 @@ public class ProductController {
         response.setViewName("user/product");
 
         Product product = productDao.findById(productId);
-        ProductFormBean form = new ProductFormBean();
+        EditProductFormBean form = new EditProductFormBean();
 
         form.setId(product.getId());
         form.setName(product.getName());
@@ -152,7 +148,7 @@ public class ProductController {
 
         // in this case we are adding the RegisterFormBean to the model
         response.addObject("form", form);
-
+        log.info(form.toString()); // Replaces "("email from form submission = " + email)"
         return response;
     }
 }

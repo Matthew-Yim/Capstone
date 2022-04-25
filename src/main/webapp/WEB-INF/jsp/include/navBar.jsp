@@ -24,19 +24,19 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <li>
-                            <a class="dropdown-item" href="../drinks/tranquilTeas">Tranquil Teas</a>
+                            <a class="dropdown-item" href="/tranquilTeas">Tranquil Teas</a>
                             <div class="dropdown-divider"></div>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="../drinks/icySnows">Icy Snows</a>
+                            <a class="dropdown-item" href="/icySnows">Icy Snows</a>
                             <div class="dropdown-divider"></div>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="../drinks/freshBlenders">Fresh Blenders</a>
+                            <a class="dropdown-item" href="/freshBlenders">Fresh Blenders</a>
                             <div class="dropdown-divider"></div>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="../drinks/hypnoticMixers">Hypnotic Mixers</a>
+                            <a class="dropdown-item" href="/hypnoticMixers">Hypnotic Mixers</a>
                         </li>
                     </ul>
                 </li>
@@ -60,11 +60,11 @@
                     <a class="nav-link" href="/showAll">View Products</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/search">Search Product</a>
+                    <a class="nav-link" href="/searchProduct">Search Product</a>
                 </li>
                 <li class="nav-item">
                     <sec:authorize access="isAuthenticated()">
-                        <a class="nav-link" href="#">Search User</a>
+                        <a class="nav-link" href="/searchUser">Search User</a>
                     </sec:authorize>
                 </li>
             </ul>

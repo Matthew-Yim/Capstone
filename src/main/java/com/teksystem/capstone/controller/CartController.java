@@ -122,7 +122,7 @@ public class CartController {
     @RequestMapping(value = "/cart/subtract/{orderProductId}", method = RequestMethod.GET)
     public ModelAndView subtractQuantity(@PathVariable("orderProductId") Integer orderProductId) throws Exception{
         ModelAndView response = new ModelAndView();
-        response.setViewName("redirect:/cart/cart");
+        response.setViewName("redirect:/cart");
         OrderProduct cartItem = orderProductDao.findById(orderProductId);
         if(cartItem == null){
             String error = "You Dunn messed up";
@@ -139,7 +139,7 @@ public class CartController {
     @RequestMapping(value = "/cart/plus/{orderProductId}", method = RequestMethod.GET)
     public ModelAndView addQuantity(@PathVariable("orderProductId") Integer orderProductId) throws Exception{
         ModelAndView response = new ModelAndView();
-        response.setViewName("redirect:/cart/cart");
+        response.setViewName("redirect:/cart");
         OrderProduct cartItem = orderProductDao.findById(orderProductId);
         if(cartItem == null){
             String error = "You Dunn messed up";
