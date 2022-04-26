@@ -113,6 +113,7 @@ create products / search for products / Search for User / Add items to a Cart / 
  - How to connect the front end to backend then database
  - How to read errors
  - how to debug effectively
+ - How to learn different perspectives of viewing problems by helping others with similar issues.
 ## Future Improvements
  - I want to make the products appear as cards for a more cleaner appearance
  - I want to make a checkout portion of the application for full functionality
