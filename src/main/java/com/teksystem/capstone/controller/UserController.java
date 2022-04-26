@@ -62,13 +62,14 @@ public class UserController {
         response.setViewName("login/register");
 
         User user = userDao.findById(userId);
+        log.info(user.toString());
         EditUserFormBean form = new EditUserFormBean();
         UserRoleFormBean userRoleForm = new UserRoleFormBean();
 
         form.setId(user.getId());
-        form.setEmail(form.getEmail());
-        form.setFirstName(form.getFirstName());
-        form.setLastName(form.getLastName());
+        form.setEmail(user.getEmail());
+        form.setFirstName(user.getFirstName());
+        form.setLastName(user.getLastName());
         userRoleForm.setUserRole(userRoleForm.getUserRole());
         userRoleForm.setUserId(user.getId());
         // form.setPassword(form.getPassword());

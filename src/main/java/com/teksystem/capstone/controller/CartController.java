@@ -51,7 +51,7 @@ public class CartController {
     @RequestMapping(value = "/AddCart/{productId}", method = RequestMethod.GET)
     public ModelAndView addItemToList(@PathVariable("productId") Integer productId) throws Exception {
         ModelAndView response = new ModelAndView();
-        response.setViewName("cart/cart");
+        response.setViewName("redirect:/cart");
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
         User user = userDao.findByEmail(username);
@@ -104,17 +104,17 @@ public class CartController {
         return response;
     }
     @RequestMapping(value = "/cart/delete/{orderProductId}", method = RequestMethod.GET)
-    public ModelAndView deleteProduct(@PathVariable("orderProductId") Integer orderProductId) throws Exception{
+    public ModelAndView deleteCartItem(@PathVariable("orderProductId") Integer orderProductId) throws Exception{
         ModelAndView response = new ModelAndView();
-        response.setViewName("cart/cart");
+        response.setViewName("redirect:/cart");
         OrderProduct cartItem = orderProductDao.findById(orderProductId);
         if(cartItem == null){
             String error = "You Dunn messed up";
             response.addObject("error", error);
         }
         else{
-            orderProductDao.delete(cartItem);
             log.info("We finna delete Product: " + cartItem.getId());
+            orderProductDao.delete(cartItem);
         }
         return response;
     }

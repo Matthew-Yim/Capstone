@@ -29,6 +29,11 @@
                     <button class="button" style="font-size: 20px">One Less?</button>
                 </a>
             </td>
+            <td>
+                <a href="/cart/delete/${order.id}">
+                    <button class="button" style="font-size: 20px">Delete</button>
+                </a>
+            </td>
         </tr>
     </c:forEach>
 </table>

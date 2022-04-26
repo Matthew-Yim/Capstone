@@ -55,7 +55,6 @@
                     <div style="color:red;">${error.getDefaultMessage()}</div>
                 </c:forEach>
             </div>
-            <sec:authorize access="!isAuthenticated()">
             <div class="form-group">
                     <div class="input-icon">
                         <i class="fa-solid fa-lock fa-bounce"></i>
@@ -66,7 +65,6 @@
                             <div style="color:red;">${error.getDefaultMessage()}</div>
                         </c:forEach>
                 </div>
-            </sec:authorize>
             <div>
                 <sec:authorize access="isAuthenticated()">
                     <p>Please select level of access.</p>
