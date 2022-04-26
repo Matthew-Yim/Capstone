@@ -13,7 +13,7 @@ create products / search for products / Search for User / Add items to a Cart / 
  - [Future Improvements](#Future-Improvements)
  - [Technical Architecture]()
  - [Wire Frame]()
- - [Schema Diagram]()
+ - [Schema Diagram](https://github.com/Matthew-Yim/Capstone/blob/main/ER_Diagram.JPG)
 
 
 ## Daily Progress
