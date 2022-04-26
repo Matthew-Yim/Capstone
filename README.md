@@ -11,12 +11,9 @@ create products / search for products / Search for User / Add items to a Cart / 
  - [Technical Challenges](#Technical-Challenges)
  - [Lessons Learned](#Lessons-Learned)
  - [Future Improvements](#Future-Improvements)
- - [Technical Architecture](https://github.com/HelloJon29/jonathan_kim_case_study/blob/main/technical_architecture.png)
- - [Wire Frame](https://github.com/HelloJon29/jonathan_kim_case_study/blob/main/Kim_Jonathan_Wireframe.pdf)
- - [Schema Diagram](https://github.com/HelloJon29/jonathan_kim_case_study/blob/main/schema.png)
- - [Jira Board](https://github.com/HelloJon29/jonathan_kim_case_study/blob/main/JiraBoard.jpg)
- - [JIRA](https://jonk.atlassian.net/jira/software/projects/KJC/boards/2/roadmap)
->please contact [Jonathan Kim](mailto:jonkim1996@gmail.com) for access
+ - [Technical Architecture]()
+ - [Wire Frame]()
+ - [Schema Diagram]()
 
 
 ## Daily Progress
