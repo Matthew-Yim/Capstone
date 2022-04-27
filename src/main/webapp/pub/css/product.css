@@ -7,8 +7,10 @@ html, body{
 }
 body{
     margin: 0;
-    background: url("../images/pexels-energepiccom-110472.jpg") no-repeat center fixed;
-    background-size: cover;}
+    background: url("../images/coffeeJob.jpg") no-repeat center fixed;
+    background-size: cover;
+    overflow-x: hidden;
+}
 #login{
     color: whitesmoke;
 }
@@ -31,12 +33,14 @@ body{
 .navbar{
     background-color: #3F3F3F; opacity: 0.85
 }
-#registrationForm{
+#productForm{
     color: whitesmoke;
     text-shadow: 2px 2px 8px #FF0000;
     font-weight: bold;
 }
-
+.textFormat{
+    color: black; font-size: x-large; font-weight: bolder
+}
 .content{
     width: 400px;
     height: 1000px;

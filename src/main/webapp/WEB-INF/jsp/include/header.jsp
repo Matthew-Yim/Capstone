@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html lang="en">
 <head>
@@ -18,6 +18,5 @@
     <script src="https://kit.fontawesome.com/a252513593.js" crossorigin="anonymous"></script>
 
     <h1 id="headerMessage">Welcome to Boba Bomb</h1>
-<%--    <sec:authentication property="principal.username"/>--%>
 </head>
 <body>

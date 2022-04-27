@@ -1,5 +1,6 @@
 package com.teksystem.capstone.database.dao;
 
+import com.teksystem.capstone.database.entity.Product;
 import com.teksystem.capstone.database.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -26,7 +27,7 @@ public interface UserDAO extends JpaRepository<User, Long> {
     public List<User> getByPassword(@Param("password") String password);
 
     // select * from user where upper(first_name) like '%A%';
-    List<User> findByFirstNameIgnoreCaseContaining(String search);
+    List<User> findByFirstNameIgnoreCaseContaining(@Param("firstName") String search);
 
     User findByEmail(String value);
 }

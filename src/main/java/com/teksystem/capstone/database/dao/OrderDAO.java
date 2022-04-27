@@ -23,7 +23,8 @@ public interface OrderDAO extends JpaRepository<Order, Long> {
 
     public List<Order> findByStatus(@Param("status") String status);
 
-    @Query("select u from User as u join Order as o where u.id = :userId and o.status = :status")
+//    @Query("select u from User as u join Order as o where u.id = :userId and o.status = :status")
+    @Query(value = "SELECT * FROM orders WHERE user_id = :userId AND status = :status", nativeQuery = true)
     public Order findOrderByUserIdAndStatus(@Param("userId") Integer userId, @Param("status") String status);
 
 }

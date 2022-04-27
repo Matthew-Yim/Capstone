@@ -6,7 +6,10 @@ html, body{
     font-size: larger;
 }
 body{
-    background-color: dimgrey;
+    margin: 0;
+    background: url("../images/cart.jpg") no-repeat center fixed;
+    background-size: cover;
+    overflow-x: hidden;
 }
 #login{
     color: whitesmoke;
@@ -14,9 +17,52 @@ body{
 #signUp{
     color: red;
 }
+#headerMessage{
+    box-sizing: border-box;
+    color:  rgb(125, 117, 115);
+    background-color: #262626;
+    display: block;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+#boba-logo{
+    border-radius: 50%;
+    color: red;
+}
 .navbar {
     background-color: #3F3F3F;
     opacity: 0.85
+}
+.glow {
+    font-size: 30px;
+    color: white;
+    text-align: center;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px red, 0 0 40px red, 0 0 50px red, 0 0 60px red, 0 0 70px red;
+}
+.text{
+    color: white;
+    font-size: large;
+}
+.button{
+    background-color: darkred;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    /*-webkit-transition-duration: 0.4s; !* Safari *!*/
+    /*transition-duration: 0.4s;*/
+    border-radius: 20px;
+}
+.button:hover{
+    background: indianred;
+    box-shadow: 2px 2px 10px;
+    transition: 0.4s;
 }
 footer{
     background-color: #111;
@@ -24,6 +70,11 @@ footer{
     width: 100%;
     padding-top: 40px;
     color: whitesmoke;
+    position: absolute;
+    top: 120%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
 }
 .footer-content{
     display: flex;
