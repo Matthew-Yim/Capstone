@@ -47,7 +47,7 @@ public class CartController {
         return response;
     }
 
-    //this has too be product id not order_products
+    // This has too be product id not order_products
     @RequestMapping(value = "/AddCart/{productId}", method = RequestMethod.GET)
     public ModelAndView addItemToList(@PathVariable("productId") Integer productId) throws Exception {
         ModelAndView response = new ModelAndView();
@@ -56,9 +56,9 @@ public class CartController {
         String username = authentication.getName();
         User user = userDao.findByEmail(username);
 
-        // add items to list
-        //create new order there and set status to pending
-        //in the cart have the cart look up for any active order associated to the user log in and have them completed
+        // Add items to list
+        // Create new order there and set status to pending
+        // In the cart have the cart look up for any active order associated to the user log in and have them completed
         Product product = productDao.findById(productId);
         OrderProduct cartItem;
         Order order = orderDao.findOrderByUserIdAndStatus(user.getId(), "PENDING");

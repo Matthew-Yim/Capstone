@@ -148,7 +148,7 @@ public class ProductController {
 
         // in this case we are adding the RegisterFormBean to the model
         response.addObject("form", form);
-        log.info(form.toString()); // Replaces "("email from form submission = " + email)"
+        log.info(form.toString());
         return response;
     }
 }

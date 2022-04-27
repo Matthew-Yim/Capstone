@@ -11,8 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface OrderProductDAO extends JpaRepository<OrderProduct, Long> {
-    //public List<Cart> listCartItems(User user);
-//    public List<CartItem> findByUser(User user);
+
     public OrderProduct findById(@Param("id") Integer id);
     public List<OrderProduct> findByOrderId(@Param("orderId") Integer orderId);
     public OrderProduct findByProductId(@Param("productId") Integer Productid);

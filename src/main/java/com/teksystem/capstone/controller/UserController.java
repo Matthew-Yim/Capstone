@@ -93,9 +93,6 @@ public class UserController {
         }
 
         // this line puts the list of users that we just queried into the model
-        // the model is a map ( key value store )
-        // any object of any kind can go into the model using this key value
-        // in this case it is a list of Users
         response.addObject("usersModelKey", users);
         response.addObject("userName", userName);
 

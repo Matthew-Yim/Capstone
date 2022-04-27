@@ -23,7 +23,6 @@ public class UserRoleDAOTest {
     public void saveUserTest(){
         UserRole userRole = new UserRole(10, 10, "ADMIN");
         userRoleDao.save(userRole);
-        // Testing to see if the order is actual created by determining that the id is not null
         Assertions.assertNotNull(userRole.getId());
     }
 
